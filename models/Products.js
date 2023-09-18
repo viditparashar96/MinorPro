@@ -35,7 +35,10 @@ const productSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
-  ratings: [{ type: Number }],
+  orderQuantity:{
+    type: Number,
+    default:1
+  },
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
   createdAt:{
     type:Date,

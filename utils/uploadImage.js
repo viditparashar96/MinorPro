@@ -2,9 +2,9 @@ const cloudinary = require('cloudinary');
 
 exports.imageUploader=async(file)=>{
     try {
-        // const options={"codehelp"}
+        
        return  await cloudinary.v2.uploader.upload(file.tempFilePath,{
-        folder:"codehelp",
+        folder:"Products(cllg)",
         resource_type:"auto"
        });
        
