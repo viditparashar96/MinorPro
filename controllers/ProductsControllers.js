@@ -35,6 +35,7 @@ exports.createProduct=async(req,res)=>{
 
       const imageResult= await imageUploader(photo)
        const  createdProduct=await Products.create({
+        user:req.user.id,
         title,
         description,
         price,

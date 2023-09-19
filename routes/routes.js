@@ -18,8 +18,8 @@ router.patch("/updateproduct/:id",auth,isAdmin,updateProduct)
 router.post("/createreview/:productId",auth,isAdmin,createReview)
 
 // Customer Routes==>
-router.get("/addtocart/:productId",auth,addToCart)
-router.get("/deletefromcart/:productId",auth,removeFromCart)
+router.post("/addtocart/:productId",auth,addToCart)
+// router.get("/deletefromcart/:productId",auth,removeFromCart)
 
 
 

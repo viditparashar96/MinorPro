@@ -11,9 +11,11 @@ const cartSchema = new mongoose.Schema({
     ref: 'Product',
     required: true,
   },
-  totalBill:{
+  productQuantity:{
     type:Number,
-  }
+    default:1
+  },
+ 
 });
 
 const Cart = mongoose.model('Cart', cartSchema);
