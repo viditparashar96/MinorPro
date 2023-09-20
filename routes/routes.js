@@ -13,13 +13,12 @@ router.post("/login",loginContoller)
 router.post("/logout",auth,logout)
 // Admin Routes===>
 router.post("/createproduct",auth,isAdmin,createProduct)
-router.post("/allproduct",auth,isAdmin,getAllProducts)
 router.patch("/updateproduct/:id",auth,isAdmin,updateProduct)
-router.post("/createreview/:productId",auth,isAdmin,createReview)
+router.post("/createreview/:productId",auth,createReview)
 
 // Customer Routes==>
 router.post("/addtocart/:productId",auth,addToCart)
-// router.get("/deletefromcart/:productId",auth,removeFromCart)
+router.post("/deletefromcart/:productId",auth,removeFromCart)
 
 
 

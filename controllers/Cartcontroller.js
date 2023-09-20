@@ -6,6 +6,7 @@ const Cart=require("../models/Cart")
 exports.addToCart=async(req,res)=>{
     try {
         const{quantity}=req.body
+        
       const {productId}=req.params
       const product=await Products.findOne({_id:productId})
       if(!product){
@@ -14,19 +15,27 @@ exports.addToCart=async(req,res)=>{
             msg:"Product not found"
         })
       }
-      const cartItem=await Cart.create({
-        user:req.user.id,
-        product:product._id,
-        productQuantity:quantity
-      })
-      console.log(cartItem)
+      if (quantity < 1 || quantity > product.stockQuantity) {
+        return res.status(400).json({
+          success: false,
+          msg: 'Invalid quantity',
+        });
+      }
       
-      const user=await  User.findByIdAndUpdate(req.user.id,{$push:{cart:cartItem._id},$set:{totalCartBill:quantity*product.price}},{new:true}).populate("cart")
+      const user=await User.findOne({_id:req.user.id})
+      user.cart.push(product._id)
+      user.totalCartBill+=quantity*product.price
+      await user.save()
       console.log(user)
+      
+      
+      
+    
+      
       res.status(200).json({
         success:true,
         msg:"Added to cart",
-        user
+       
       })
     } catch (error) {
         console.log(error)
@@ -34,3 +43,48 @@ exports.addToCart=async(req,res)=>{
  
 }
 
+exports.removeFromCart = async (req, res) => {
+  try {
+    const{quantity}=req.body
+    const { productId } = req.params;
+    const user = await User.findOne({ _id: req.user.id });
+    const product=await Products.findOne({_id:productId})
+    if (!product) {
+      return res.status(401).json({
+        success: false,
+        msg: 'Product not found',
+      });
+    }
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        msg: 'User not found',
+      });
+    }
+
+    const productIndex = user.cart.indexOf(productId);
+
+    if (productIndex === -1) {
+      return res.status(400).json({
+        success: false,
+        msg: 'Product not found in cart',
+      });
+    }
+
+    // Remove the product from the cart
+    user.cart.splice(productIndex, 1);
+    user.totalCartBill-=quantity*product.price
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      msg: 'Removed from cart',
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      msg: 'Internal Server Error',
+    });
+  }
+};
