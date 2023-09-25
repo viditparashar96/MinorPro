@@ -10,6 +10,13 @@ require('dotenv').config()
 exports.sendOtp=async (req,res)=>{
     try {
         const {email}=req.body
+        console.log(email)
+        if(!email){
+            return res.status(401).json({
+                success:false,
+                msg:"enter email"
+            })
+        }
         const checkUserPresent=await User.findOne({email})
         if(checkUserPresent){
             return res.status(401).json({
@@ -40,7 +47,15 @@ exports.signupController=async(req,res)=>{
     try {
         
         const {name,email,phoneNumber,password,confirmPassword,role,otp}=req.body
-        console.log(name,email,otp)
+        console.log(name,email,phoneNumber,password,confirmPassword,role,otp)
+        if(role!=="Admin" && role!=="Customer"){
+            return res.status(403).json({
+                success:false,
+                msg:"Something went Wrong"
+            })
+        }
+        
+        
     if(!name || !email || !phoneNumber || !password || !confirmPassword || !role){
         return res.status(403).json({
             success:false,
@@ -101,11 +116,14 @@ exports.signupController=async(req,res)=>{
         additionalDetails:additionalDets._id,
     })
 
-    return res.status(200).json({
-        success:true,
-        msg:"User is registered successfully",
-        user
-    })
+     res.status(200).render("loginpage")
+     
+    //  .json({
+    //     success:true,
+    //     msg:"User is registered successfully",
+    //     user
+    // })
+    
 
 
 
@@ -153,15 +171,17 @@ exports.loginContoller=async (req,res)=>{
     res.cookie("token",token,{
         httpOnly:true,
         expires:new Date(Date.now() + 3*24*60*60*1000)
-    }).status(200).json({
-        success:true,
-        token,
-        user,
-        msg:"Logged in successful"
     })
-   } catch (error) {
-    console.log(error)
-   }
+    res.status(200).render("index",{user:user,loggedIn:true})
+    // .json({
+        //     success:true,
+        //     token,
+        //     user,
+        //     msg:"Logged in successful"
+        // })
+    } catch (error) {
+        console.log(error)
+    }
 
 
 }
@@ -171,10 +191,11 @@ exports.logout = async (req, res) => {
         res.cookie("token","",{
             httpOnly:true,
             expires:new Date(Date.now())
-        }).status(200).json({
-            success:true,
-            msg:"Logged Out "
-        })
+        }).status(200).redirect("/")
+        // .json({
+        //     success:true,
+        //     msg:"Logged Out "
+        // })
     } catch (error) {
         console.log(error)
     }

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div id="menubar">
+      <div id="border"></div>
+      <div id="left">
+          <h3>
+               <!-- <i class="ri-mickey-fill"></i> -->
+               <i class="ri-bear-smile-line"></i><a href="">Profile</a>
+              </h3>
+              <h3> <a href="">My Cart</a> </h3>
+          <h3> <a href="">Products</a> </h3>
+          <h3> <a href="">About</a> </h3>
+          
+          
+          <h3> <a href="">Contact</a> </h3>
+      </div>
+      
+      <div id="mid">
+          <div id="mid2">
+              <h4> <a href="">INSTAGRAM</a></h4>
+         <h4> <a href="">EMAIL</a></h4>
+          <h4><a href="">LINKDIN</a></h4>
+         
+
+
+          </div>
+         
+      </div>
+      <div id="right">
+          <div id="img">
+              <img src="https://images.unsplash.com/photo-1516259680870-b878830674f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
+             
+
+          </div>
+         
+      </div>
+
+  </div>
+  <div id="cursor">
+
+  </div>
+  <div id="main">
+      <div id="nav">
+          <div id="left">
+              <div id="line">
+                  <div id="line1"></div>
+                  <div id="line2"></div>
+              </div>
+
+              <h3>LOCALCRAFTS</h3>
+          </div>
+          <div id="right">
+          
+               
+            <% if(typeof loggedIn !== 'undefined' && loggedIn){%>
+                <a href="/logout">Logout</a>
+            }else{ %>
+                
+            <% } %>
+            <a href="./allproduct">shop</a>
+             
+          </div>
+      </div>
+      <div id="page1">
+          <img src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
+          <img src="https://images.unsplash.com/photo-1609881821095-3c6d97b82824?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="">
+          <div id="text">
+              <!-- <div class="text" id="text1"><h1>NATURE,</h1></div>
+              <div class="text" id="text2"><h1>HARNESSED BY</h1> </div>
+              <div class="text" id="text3"><h1>HAND.</h1></div> -->
+              <div class="text" id="text1"><h1>CRAFTING</h1></div>
+              <div class="text" id="text2"><h1>WITH LOCAL</h1> </div>
+              <div class="text" id="text3"><h1>PRIDE.</h1></div>
+
+          </div>
+          <a href="/loginpage">  <button  >Login/signup</button></a>
+         
+          
+      
+
+      </div>
+      <div id="page2">
+          <div id="left">
+              <div id="img">
+                  <!-- <img src="https://uploads-ssl.webflow.com/6390606809d9b3b71e87ca1e/63fe05f97377f43a0fb79a6e_Rectangle%202301_compressed-p-500.jpg" alt=""> -->
+                  <img src="https://images.unsplash.com/photo-1630509866847-9c007e59a8ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="">
+              </div>
+          </div>
+          <div id="right">
+              <h2>Empowering rural artisans <br> to share their unique <br> cultures with the world.</h2>
+                  <h5>We believe that rural artisans play an important role in our society, and <br>we are committed to helping them to succeed.</h5>
+          </div>
+      </div>
+      <div id="page3">
+          <div id="up">
+              <a href="">OUR GALLARY </a>
+              <a href="">@2023</a>
+          </div>
+          <div id="down">
+              <div id="img">
+                  <!-- <img src="https://images.unsplash.com/photo-1443994450376-d67ed1937914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt=""> -->
+                  <img src="https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
+              </div>
+          </div>
+      </div>
+      <div id="page4">
+          <div id="left">
+              <h4>ABOUT US</h4>
+          </div>
+          <div id="right">
+              <h4>Our platform allows artisans to showcase their handcrafted items, artwork, and agricultural produce. Buyers can browse and purchase these products, and we handle payment processing, order tracking, and reviews/ratings. We also provide features like seller profiles, a search and filter system</h4>
+          </div>
+      </div>
+      <div id="page5">
+          <div class="text" id="art"> <h1>ART</h1></div>
+          <div class="text" id="form"><h1>FORM</h1></div>
+          <div class="text" id="sound"><h1>ARTISANS</h1></div>
+          
+      </div>
+      <div id="footer">
+          <div id="left">
+              <div id="left-left">
+                  <h2>Legal</h2>
+                  <h3><a href="">Tearms and use</a></h3>
+                  <h3><a href="">Privecy policy</a></h3>
+                  <h3><a href="">Support</a></h3>
+                  
+              </div>
+              <div id="left-right">
+                  <h2>Community</h2>
+                  <h3><a href="">Tearms and use</a></h3>
+                  <h3><a href="">Privecy policy</a></h3>
+                  <h3><a href="">Support</a></h3>   
+              </div>
+          </div>
+          <div id="right">
+              <h2>Social</h2>
+              
+                  <h3><a href="">Instagram</a></h3>
+                  <h3><a href="">Email</a></h3>
+                  <h3><a href="">Linkdin</a></h3> 
+                  <h6>@2023 LOCALCRAFTS : YOU CAN SELL OR BUY YOUR PRODUCTS.</h6>
+          </div>
+
+      </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../javascripts/script.js"></script>
+  </body>
+</html>

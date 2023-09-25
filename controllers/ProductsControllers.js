@@ -59,17 +59,23 @@ exports.createProduct=async(req,res)=>{
 }
 exports.getAllProducts=async(req,res)=>{
     const allProducts=await Products.find({})
+    var loggedIn=false
+    if(req.cookies.token){
+      loggedIn=true
+    }
     if(!allProducts){
         return res.status(200).json({
             success:false,
             msg:"No products availabe"
         })
     }
-    res.status(200).json({
-        success:true,
-        msg:"All products fecthed ",
-        allProducts
-    })
+    
+    res.status(200).render('productpage', { loggedIn:loggedIn,allProducts});
+    // .json({
+    //     success:true,
+    //     msg:"All products fecthed ",
+    //     allProducts
+    // })
 
 }
 exports.updateProduct=async(req,res)=>{
@@ -121,4 +127,23 @@ exports.createReview=async(req,res)=>{
    } catch (error) {
     console.log(error)
    }
+}
+
+exports.productDetails=async(req,res)=>{
+    const id=req.params.productId
+    console.log(id)
+    const product=await Products.findOne({_id:id})
+   
+    if(!product){
+        return res.status(404).json({
+            success:false,
+            msg:"Found dets not found",
+        })
+    }
+    res.status(200).json({
+        success:true,
+        msg:"Found dets",
+        product
+       
+    })
 }

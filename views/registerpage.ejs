@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stylesheets/registerpage.css">
+</head>
+<body>
+    <div id="cursor">
+
+    </div>
+    <div id="nav">
+        <a class="logo" href="/"> <h3>LOCALCRAFTS</h3></a>
+        
+        <a href="/">Home</a>
+    </div>
+
+
+    <div id="main">
+       <div id="page1">
+        <div id="left">
+            <div id="card">
+                <form action="/signup" method="post">
+                    <h1>CREATE ACCOUNT</h1>
+                   
+                <h4>Full name</h4>
+                <input class="input" type="text" name="name">
+
+                <h4>Email</h4>
+                <input class="input email"  type="email" name="email">
+                <h4>Phone Number</h4>
+                <input class="input" type="text" name="phoneNumber">
+                <h4>Account Type?</h4>
+                <div style="display: flex; gap: 20px;">
+
+                    <label class="container">Buyer
+                        <input type="radio" checked="checked" name="role" value="Customer">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Seller
+                        <input type="radio" name="role" value="Admin">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                
+                <h4>Password</h4>
+                <input class="input"  type="password" name="password"> 
+                <h4>Confirm Password</h4>
+                <input class="input"  type="password" name="confirmPassword">
+                <div id="otp">
+
+                    <input class="input otp"  type="text" placeholder="OTP" name="otp">
+                    <div class="otpbtn">
+                        <p class="sendotp">Send OTP</p>
+
+                    </div>
+                </div>
+                
+               
+                
+
+                 <br>
+                <button>Create</button>
+
+                </form>
+
+                <div id="line"></div>
+                <h4 class="dontac">HAVE AN ACCOUNT?</h4>
+                <a  class="registerbtn"   href="/loginpage"><button>Log in</button></a>
+            </div>
+        </div>
+        <div id="right">
+            <img src="https://sjostrandcoffee.com/cdn/shop/files/login-1600-2000-4-5.jpg?v=1683038685&width=1920" alt="">
+        </div>
+       </div>
+
+
+
+       <div id="footer">
+        <div id="left">
+            <div id="left-left">
+                <h2>Legal</h2>
+                <h3><a href="">Tearms and use</a></h3>
+                <h3><a href="">Privecy policy</a></h3>
+                <h3><a href="">Support</a></h3>
+                
+            </div>
+            <div id="left-right">
+                <h2>Community</h2>
+                <h3><a href="">Tearms and use</a></h3>
+                <h3><a href="">Privecy policy</a></h3>
+                <h3><a href="">Support</a></h3>   
+            </div>
+        </div>
+        <div id="right">
+            <h2>Social</h2>
+            
+                <h3><a href="">Instagram</a></h3>
+                <h3><a href="">Email</a></h3>
+                <h3><a href="">Linkdin</a></h3> 
+                <h6>@2023 LOCALCRAFTS : YOU CAN SELL OR BUY YOUR PRODUCTS.</h6>
+        </div>
+
+    </div>
+        
+
+    </div>
+    <script src="../javascripts/productpage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      var otpbtn=  document.querySelector(".sendotp")
+      var emailval=document.querySelector(".email")
+      var otpval=document.querySelector(".otp")
+      otpbtn.addEventListener("click",()=>{
+          console.log("clicked")
+          console.log(emailval.value)
+          console.log(otpval.value)
+        axios.post("/sendotp",{ email: emailval.value }).then((res)=>console.log(res)).catch((err)=>console.log(err))
+      })
+    </script>
+</body>
+</html>

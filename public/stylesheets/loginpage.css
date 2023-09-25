@@ -1,0 +1,416 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html,body
+{
+height: 100%;
+width: 100%;
+background-color: #F6F5EE;
+
+}
+#cursor{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color:  rgb(255, 255, 255);
+    position: absolute;
+    position: fixed;
+    /* transition: 0.001s; */
+    z-index: 9999999999999999999;
+    mix-blend-mode: difference;
+}
+#nav{
+      
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    z-index: 99;
+    padding: 20px;
+    background-color: #F6F5EE;
+   
+    
+    
+}
+#nav .logo{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-family: "Gilroy";
+    
+}
+#main{
+    width: 100%;
+    height: 100%;
+
+}
+#page1{
+    width: 100%;
+    height: 100%;
+   
+    display: flex;
+    
+    
+    background-color: #F6F5EE;
+}
+#left{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+#right{
+    width: 50%;
+    height: 100%;
+    
+    
+
+}
+#right img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#card{
+    padding: 5px;
+    width: 70%;
+    height: 80%;
+    /* background-color: pink; */
+    font-family: "Gilroy";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+    /* background-color: seagreen; */
+    width: 100%;
+}
+form .input{
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgb(154, 154, 154);
+    background-color: #F6F5EE;
+    outline: none;
+    padding: 10px;
+    font-size: 15px;
+}
+
+form h4{
+    margin-top: 30px;
+    padding-bottom: 10px;
+    color: rgb(110, 110, 110);
+}
+form button{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: #F6F5EE;
+    margin-top: 30px;
+}
+.forgot{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: rgb(154, 154, 154);
+    font-weight: 100;
+   
+}
+#line{
+    width: 100%;
+    height: 1px;
+    background-color:rgb(129, 129, 129) ;
+}
+.dontac{
+    color: #232323;
+    margin-top: 30px;
+}
+.registerbtn{
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    margin-top: 30px;   
+
+}
+.registerbtn button{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: rgb(77, 77, 77);
+ 
+    border: 1px solid rgb(154, 154, 154);
+ 
+
+}
+.registerbtn button:hover{
+    border: 1px solid rgb(71, 71, 71);
+
+}
+
+#footer{
+    width: 100%;
+    height: 50vh;
+   
+    display: flex;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 100;
+    color: rgb(61, 60, 60);
+    border-top: 1px solid rgb(139, 139, 139);
+    margin-top: 30px;
+}
+#footer a{
+    text-decoration: none;
+    color: rgb(55, 54, 54);
+}
+#footer #left{
+    width: 50%;
+    height: 100%;
+    /* background-color: palegoldenrod; */
+    display: flex;
+
+}
+#footer #left #left-left{
+    width: 50%;
+    height: 100%;
+    /* border-right: 1px solid black; */
+    padding: 50px;
+}
+#footer #left #left-right{
+    width: 50%;
+    height: 100%;
+    /* border-right: 1px solid black; */
+    padding: 50px;
+}
+#footer #right{
+    width: 50%;
+    height: 100%;
+    padding-top: 100px;
+    padding-left: 30%;
+    position: relative;
+    /* background-color: pink; */
+    
+
+}
+#footer h2{
+    padding-bottom: 20px;
+}
+#footer h3{
+    padding-bottom: 15px;
+}
+
+#footer h6{
+    position: absolute;
+    left: 10%;
+    font-size: 10px;
+    top: 90%;
+}
+
+@media (max-width:600px) {
+    #cursor{
+        display: none;
+    }
+    #nav{
+        position: absolute;
+        display: flex;
+        background-color: #F6F5EE;
+        position: fixed;
+       
+        width: 100%;
+        height: 70px;
+        /* background-color: rgba(15, 30, 30, 0.317); */
+        z-index: 999000;
+        padding-top: 0.1px;
+        margin-top: 0.1px;
+        
+        
+    }
+    a{
+        color: #232323;
+    }
+    #page1{
+        width: 100%;
+        min-height: 130vh;
+       
+        display: flex;
+        flex-direction: column-reverse;
+        
+        
+        background-color: #F6F5EE;
+        
+    }
+    #page1 #left{
+        width: 100%;
+        height: 50%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: palevioletred; */
+        
+        
+        /* background-color: orchid; */
+        
+    
+    }
+    #page1 #right{
+        width: 100%;
+        height: 30vh;
+        background-color: rgb(204, 216, 112);
+        margin-top: 70px;
+        /* padding-top: 70px ; */
+        
+        
+    
+    }
+    #right img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    #card{
+        padding: 5px;
+        width: 95%;
+        height: 80%;
+        /* background-color: pink; */
+        font-family: "Gilroy";
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    form{
+        /* background-color: seagreen; */
+        width: 100%;
+    }
+    form .input{
+        width: 100%;
+        height: 50px;
+        border: 1px solid rgb(154, 154, 154);
+        background-color: #F6F5EE;
+        outline: none;
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    form h4{
+        margin-top: 30px;
+        padding-bottom: 10px;
+        color: rgb(110, 110, 110);
+    }
+    form button{
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        color: #F6F5EE;
+        margin-top: 30px;
+    }
+    .forgot{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: rgb(134, 134, 134);
+        font-weight: 100;
+        font-size: 13px;
+       
+    }
+    #line{
+        width: 100%;
+        height: 1px;
+        background-color:rgba(235, 0, 0, 0) ;
+        /* background: transparent; */
+    }
+    .dontac{
+        color: #232323;
+        margin-top: 30px;
+        font-size: 15px;
+    }
+    .registerbtn{
+        width: 100%;
+        height:100px;
+        background-color: transparent;
+        margin-top: 30px;   
+    
+    }
+    .registerbtn button{
+        width: 100%;
+        height: 50px;
+        background-color: transparent;
+        color: rgb(77, 77, 77);
+     
+        border: 1px solid rgb(154, 154, 154);
+     
+    
+    }
+    .registerbtn button:hover{
+        border: 1px solid rgb(71, 71, 71);
+    
+    }
+    
+
+
+    
+}
+
+@media (max-width:660px) {
+    #footer{
+        width: 100%;
+        height: 60vh;
+        /* background-color: #ffffff; */
+        display: flex;
+        flex-direction: column;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 8px;
+        font-weight: 100;
+        color: rgb(61, 60, 60);
+        /* background-color: rgb(206, 192, 157); */
+    }
+    #footer #left{
+        width: 100%;
+        height: 40%;
+        /* background-color: palegoldenrod; */
+        display: flex;
+        /* background-color: rgb(228, 173, 7); */
+    
+    }
+    #footer #left #left-left{
+        width: 50%;
+        height: 100%;
+        /* border-right: 1px solid black; */
+        /* background-color: deepskyblue; */
+        padding: 50px;
+    }
+    #footer #left #left-right{
+        width: 50%;
+        height: 100%;
+        /* border-right: 1px solid black; */
+        /* background-color: deepskyblue; */
+        padding: 50px;
+    }
+    #footer #right{
+        width: 100%;
+        height: 50%;
+        padding-top: 50px;
+        padding-left: 30%;
+        position: relative;
+        /* background-color: seagreen; */
+        
+    
+    }
+    #footer h2{
+        padding-bottom: 20px;
+    }
+    #footer h3{
+        padding-bottom: 15px;
+    }
+    
+    #footer h6{
+        position: absolute;
+        left: 10%;
+        font-size: 10px;
+        top: 90%;
+    } 
+    
+}
