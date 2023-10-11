@@ -4,87 +4,86 @@ const Cart=require("../models/Cart")
 
 
 exports.addToCart=async(req,res)=>{
+
     try {
-        const{quantity}=req.body
-        
-      const {productId}=req.params
-      const product=await Products.findOne({_id:productId})
-      if(!product){
-        return res.status(403).json({
-            success:false,
-            msg:"Product not found"
+      const {quantity}=req.body
+      console.log(quantity)
+       console.log(req.params.productId)
+      const currentUser=await User.findById(req.user.id)
+      const product=await Products.findById(req.params.productId)
+      const itemExist=await Cart.findOne({product:product._id})
+      
+      if(itemExist){
+        itemExist.productQuantity+=1
+        itemExist.save()
+        return res.status(200).json({
+          msg:"Added",
+          success:true
         })
       }
-      if (quantity < 1 || quantity > product.stockQuantity) {
-        return res.status(400).json({
-          success: false,
-          msg: 'Invalid quantity',
-        });
-      }
-      
-      const user=await User.findOne({_id:req.user.id})
-      user.cart.push(product._id)
-      user.totalCartBill+=quantity*product.price
-      await user.save()
-      console.log(user)
-      
-      
-      
-    
-      
+      currentUser.cart.push(product._id)
+      const cart=await Cart.create({
+        user:currentUser._id,
+        product:product._id,
+        productQuantity:quantity
+      })
+
+     await currentUser.save()
+
+
       res.status(200).json({
         success:true,
-        msg:"Added to cart",
-       
+        msg:"Product Added Successfully",
+        currentUser,
+        cart
       })
+      
     } catch (error) {
-        console.log(error)
+      console.log(error)
     }
- 
+
+
 }
 
-exports.removeFromCart = async (req, res) => {
+exports.removeFromCart=async(req,res)=>{
+
   try {
-    const{quantity}=req.body
-    const { productId } = req.params;
-    const user = await User.findOne({ _id: req.user.id });
-    const product=await Products.findOne({_id:productId})
-    if (!product) {
-      return res.status(401).json({
-        success: false,
-        msg: 'Product not found',
-      });
-    }
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        msg: 'User not found',
-      });
-    }
 
-    const productIndex = user.cart.indexOf(productId);
-
-    if (productIndex === -1) {
+     console.log(req.params.productId)
+    const currentUser=await User.findById(req.user.id)
+    const product=await Products.findById(req.params.productId)
+    const itemExist=await Cart.findOne({product:product._id})
+    const cart=await Cart.find({})
+    console.log(cart)
+    
+    if(!itemExist){
+      
       return res.status(400).json({
-        success: false,
-        msg: 'Product not found in cart',
-      });
+        success:false,
+        msg:"Item does not exist",
+      })
     }
+    const productIndex=currentUser.cart.indexOf(product._id)
+    currentUser.cart.splice(productIndex,1)
+   await currentUser.save()
+   
+    await Cart.findByIdAndRemove(itemExist._id);
+   
 
-    // Remove the product from the cart
-    user.cart.splice(productIndex, 1);
-    user.totalCartBill-=quantity*product.price
-    await user.save();
+  
+
 
     res.status(200).json({
-      success: true,
-      msg: 'Removed from cart',
-    });
+      success:true,
+      msg:"Product Added Successfully",
+      currentUser,
+      
+    })
+    
   } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      success: false,
-      msg: 'Internal Server Error',
-    });
+    console.log(error)
   }
-};
+
+
+}
+
